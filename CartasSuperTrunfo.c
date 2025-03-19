@@ -9,6 +9,8 @@ int main() {
     float areaEmKmCarta1;
     float pibCarta1;
     int numeroPontosTuristicosCarta1;
+    float densidadePopulacionalCarta1;
+    float pibPerCapitaCarta1;
 
     // Variáveis da carta 2
     char estadoCarta2;
@@ -18,7 +20,8 @@ int main() {
     float areaEmKmCarta2;
     float pibCarta2;
     int numeroPontosTuristicosCarta2;
-
+    float densidadePopulacionalCarta2;
+    float pibPerCapitaCarta2;
 
     printf("------------------------------------------------------------- \n");
     printf("----------------------- SUPER TRUNFO ------------------------ \n");
@@ -55,6 +58,12 @@ int main() {
     printf("Informe o número de pontos turísticos (Ex: 30): \n");
     scanf("%d", &numeroPontosTuristicosCarta1);
 
+    //Calcula a Densidade Populacional
+    densidadePopulacionalCarta1 = populacaoCarta1 / areaEmKmCarta1;
+
+    ////Calcula o PIB per Capita
+    pibPerCapitaCarta1 = pibCarta1 / populacaoCarta1;
+
     printf("--------------------------------------------------------------------------------------------------------- \n");
     printf("----------------------- Carta 1 registrada com sucesso Estado: %c ---------------------------------------- \n", estadoCarta1);
     printf("--------------------------------------------------------------------------------------------------------- \n \n");
@@ -86,6 +95,12 @@ int main() {
     printf("Informe o número de pontos turísticos (Ex: 30): \n");
     scanf("%d", &numeroPontosTuristicosCarta2);
 
+    //Calcula a Densidade Populacional
+    densidadePopulacionalCarta2 = populacaoCarta2 / areaEmKmCarta2;
+
+    ////Calcula o PIB per Capita
+    pibPerCapitaCarta2 = pibCarta2 / populacaoCarta2;
+
     printf("--------------------------------------------------------------------------------------------------------- \n");
     printf("----------------------- Carta 2 registrada com sucesso Estado: %c ---------------------------------------- \n", estadoCarta2);
     printf("--------------------------------------------------------------------------------------------------------- \n \n");
@@ -101,7 +116,9 @@ int main() {
     printf("População: %d \n", populacaoCarta1);
     printf("Área: %.2f km² \n", areaEmKmCarta1);
     printf("PIB: %.2f bilhões de reais \n", pibCarta1);
-    printf("Número de Pontos Turísticos: %d \n \n", numeroPontosTuristicosCarta1);
+    printf("Número de Pontos Turísticos: %d \n", numeroPontosTuristicosCarta1);
+    printf("Densidade Populacional: %.2f  hab/km² \n", densidadePopulacionalCarta1);
+    printf("PIB per Capita: %.2f reais \n \n", pibPerCapitaCarta1);
 
     printf("---------------------------------------------------------------------------------- \n");
     printf("----------------------- Exibindo valor da Carta 2 ------------------------------- \n");
@@ -115,6 +132,8 @@ int main() {
     printf("Área: %.2f km² \n", areaEmKmCarta2);
     printf("PIB: %.2f bilhões de reais \n", pibCarta2);
     printf("Número de Pontos Turísticos: %d \n \n", numeroPontosTuristicosCarta2);
+    printf("Densidade Populacional: %.2f  hab/km² \n", densidadePopulacionalCarta2);
+    printf("PIB per Capita: %.2f reais \n \n", pibPerCapitaCarta2);
 
     printf("---------------------------------------------------------------------------------- \n");
     printf("----------------------- Programa Encerrado! -------------------------------------- \n");
