@@ -1,27 +1,38 @@
 #include <stdio.h>
+#include <stdbool.h> 
+
+//Utilizado const char* para evitar problema de estouro de memória.
+void printarMensagem(bool comparacao, const char* nomePropriedade){
+    if(comparacao)
+        printf("%s: Carta 1 venceu (1)\n", nomePropriedade);
+    else
+        printf("%s: Carta 2 venceu (0)\n", nomePropriedade);
+}
 
 int main() {
     // Variáveis da carta 1
     char estadoCarta1;
     char codigoCarta1[4];
     char nomeCidadeCarta1[60];
-    int populacaoCarta1;
+    unsigned long int populacaoCarta1;
     float areaEmKmCarta1;
     float pibCarta1;
     int numeroPontosTuristicosCarta1;
     float densidadePopulacionalCarta1;
     float pibPerCapitaCarta1;
+    float superPoderCarta1;
 
     // Variáveis da carta 2
     char estadoCarta2;
     char codigoCarta2[4];
     char nomeCidadeCarta2[60];
-    int populacaoCarta2;
+    unsigned long  populacaoCarta2;
     float areaEmKmCarta2;
     float pibCarta2;
     int numeroPontosTuristicosCarta2;
     float densidadePopulacionalCarta2;
     float pibPerCapitaCarta2;
+    float superPoderCarta2;
 
     printf("------------------------------------------------------------- \n");
     printf("----------------------- SUPER TRUNFO ------------------------ \n");
@@ -47,7 +58,7 @@ int main() {
     fgets(nomeCidadeCarta1, sizeof(nomeCidadeCarta1), stdin);
 
     printf("Informe a população (Ex: 12325000): \n");
-    scanf("%d", &populacaoCarta1);
+    scanf("%lu", &populacaoCarta1);
 
     printf("Informe a área em Km² (Ex: 1521.11): \n");
     scanf("%f", &areaEmKmCarta1);
@@ -63,6 +74,8 @@ int main() {
 
     ////Calcula o PIB per Capita
     pibPerCapitaCarta1 = pibCarta1 / populacaoCarta1;
+
+    superPoderCarta1 = populacaoCarta1 + areaEmKmCarta1 + pibCarta1 + numeroPontosTuristicosCarta1 + pibPerCapitaCarta1 + (1 / densidadePopulacionalCarta1);
 
     printf("--------------------------------------------------------------------------------------------------------- \n");
     printf("----------------------- Carta 1 registrada com sucesso Estado: %c ---------------------------------------- \n", estadoCarta1);
@@ -84,7 +97,7 @@ int main() {
     fgets(nomeCidadeCarta2, sizeof(nomeCidadeCarta2), stdin);
 
     printf("Informe a população (Ex: 12325000): \n");
-    scanf("%d", &populacaoCarta2);
+    scanf("%lu", &populacaoCarta2);
 
     printf("Informe a área em Km² (Ex: 1521.11): \n");
     scanf("%f", &areaEmKmCarta2);
@@ -100,6 +113,8 @@ int main() {
 
     ////Calcula o PIB per Capita
     pibPerCapitaCarta2 = pibCarta2 / populacaoCarta2;
+
+    superPoderCarta2 = populacaoCarta2 + areaEmKmCarta2 + pibCarta2 + numeroPontosTuristicosCarta2 + pibPerCapitaCarta2 + (1 / densidadePopulacionalCarta2);
 
     printf("--------------------------------------------------------------------------------------------------------- \n");
     printf("----------------------- Carta 2 registrada com sucesso Estado: %c ---------------------------------------- \n", estadoCarta2);
@@ -131,9 +146,34 @@ int main() {
     printf("População: %d \n", populacaoCarta2);
     printf("Área: %.2f km² \n", areaEmKmCarta2);
     printf("PIB: %.2f bilhões de reais \n", pibCarta2);
-    printf("Número de Pontos Turísticos: %d \n \n", numeroPontosTuristicosCarta2);
+    printf("Número de Pontos Turísticos: %d \n", numeroPontosTuristicosCarta2);
     printf("Densidade Populacional: %.2f  hab/km² \n", densidadePopulacionalCarta2);
     printf("PIB per Capita: %.2f reais \n \n", pibPerCapitaCarta2);
+
+    printf("---------------------------------------------------------------------------------- \n");
+    printf("-----------------------   Comparando as Cartas  ---------------------------------- \n");
+    printf("---------------------------------------------------------------------------------- \n \n");
+
+    bool comparacaoPopulacao = populacaoCarta1 > populacaoCarta2;
+    bool comparacaoAreaEmKm = areaEmKmCarta1 > areaEmKmCarta2;
+    bool comparacaoPib = pibCarta1 > pibCarta2;
+    bool comparacaoPontosTuristicos = numeroPontosTuristicosCarta1 > numeroPontosTuristicosCarta2;
+    bool comparacaoPontosDensidadePopulacional = densidadePopulacionalCarta1 < densidadePopulacionalCarta2;
+    bool comparacaoPibPerCapita = pibPerCapitaCarta1 > pibPerCapitaCarta2;
+    bool comparacaoSuperPorder = superPoderCarta1 > superPoderCarta2;
+
+    printf("---------------------------------------------------------------------------------- \n");
+    printf("-----------------------   Resultado das Cartas  ---------------------------------- \n");
+    printf("---------------------------------------------------------------------------------- \n \n");
+
+    printf("Comparação de Cartas:\n");
+    printarMensagem(comparacaoPopulacao, "População");
+    printarMensagem(comparacaoAreaEmKm, "Área");
+    printarMensagem(comparacaoPib, "PIB");
+    printarMensagem(comparacaoPontosTuristicos, "Pontos Turísticos");
+    printarMensagem(comparacaoPontosDensidadePopulacional, "Densidade Populacional");
+    printarMensagem(comparacaoPibPerCapita, "PIB per Capita");
+    printarMensagem(comparacaoSuperPorder,"Super Poder");
 
     printf("---------------------------------------------------------------------------------- \n");
     printf("----------------------- Programa Encerrado! -------------------------------------- \n");
